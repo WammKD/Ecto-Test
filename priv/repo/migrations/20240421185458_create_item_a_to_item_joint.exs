@@ -1,8 +1,8 @@
-defmodule Testing.Repo.Migrations.CreateItemAToItemB do
+defmodule Testing.Repo.Migrations.CreateItemAToItemJoint do
   use Ecto.Migration;
 
   def change do
-    create table(:item_a_to_item_b, primary_key: false) do
+    create table(:item_a_to_item_joint, primary_key: false) do
       add(:item_a_id, references(:item_a,
                                  column:    :item_a_id,
                                  on_delete: :delete_all), primary_key: true);
