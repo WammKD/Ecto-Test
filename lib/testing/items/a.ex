@@ -8,16 +8,16 @@ defmodule Testing.Items.A do
     field(:i_dunno,   :string);
     field(:smth_else, :integer);
 
-    many_to_many(:item_bs,                         Testing.Items.B,
-                 join_through: "item_a_to_item_b", join_keys: [item_a_id: :item_a_id,
-                                                               item_b_id: :item_b_id]);
+    many_to_many(:item_joints,                         Testing.Items.Joint,
+                 join_through: "item_a_to_item_joint", join_keys: [item_a_id:     :item_a_id,
+                                                                   item_joint_id: :item_joint_id]);
 
     timestamps();
   end
 
-  def changeset(%Testing.Items.A{} = a, attrs, itemBs) do
+  def changeset(%Testing.Items.A{} = a, attrs, itemJoints) do
     a |> Repo.preload(:item_bs)
       |> cast(attrs, [:i_dunno, :smth_else])
-      |> put_assoc(:item_bs, itemBs);
+      |> put_assoc(:item_joints, itemJoints);
   end
 end
