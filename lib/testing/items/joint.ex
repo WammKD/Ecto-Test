@@ -9,6 +9,6 @@ defmodule Testing.Items.Joint do
   end
 
   def changeset(%Testing.Items.B{} = b) do
-    %Testing.Items.B{} |> Repo.preload(:item_b) |> cast(%{}, []) |> put_assoc(:item_b, b);
+    %Testing.Items.Joint{} |> Repo.preload(:item_b) |> cast(%{}, []) |> put_assoc(:item_b, b);
   end
 end
