@@ -3,7 +3,7 @@ defmodule Testing.Items.Joint do
   import Ecto.Changeset;
   alias  Testing.Repo;
 
-  @primary_key {:item_joint_id, :id, autogenerate: true}
+  @primary_key {:joint_id, :id, autogenerate: true}
   schema "item_joint" do
     belongs_to(:item_b, Testing.Items.B, foreign_key: :item_b_id, references: :item_b_id);
   end

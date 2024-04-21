@@ -6,8 +6,8 @@ defmodule Testing.Repo.Migrations.CreateItemAToItemJoint do
       add(:item_a_id,     references(:item_a,
                                      column:    :item_a_id,
                                      on_delete: :delete_all), primary_key: true);
-      add(:item_joint_id, references(:item_join,
-                                     column:    :item_join_id,
+      add(:item_joint_id, references(:item_joint,
+                                     column:    :joint_id,
                                      on_delete: :delete_all), primary_key: true);
     end
 
