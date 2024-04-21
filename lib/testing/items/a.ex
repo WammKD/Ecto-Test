@@ -1,6 +1,7 @@
 defmodule Testing.Items.A do
   use    Ecto.Schema;
   import Ecto.Changeset;
+  alias  Testing.Repo;
 
   @primary_key {:item_a_id, :id, autogenerate: true}
   schema "item_a" do
@@ -15,7 +16,8 @@ defmodule Testing.Items.A do
   end
 
   def changeset(%Testing.Items.A{} = a, attrs, itemBs) do
-    a |> cast(attrs, [:i_dunno, :smth_else])
+    a |> Repo.preload(:item_bs)
+      |> cast(attrs, [:i_dunno, :smth_else])
       |> put_assoc(:item_bs, itemBs);
   end
 end
