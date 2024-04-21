@@ -7,13 +7,14 @@ defmodule Testing.MainEvent do
   alias  Testing.Repo;
   alias  Testing.Items.A;
   alias  Testing.Items.B;
+  alias  Testing.Items.Joint;
 
   def setup() do
-    b1 = %B{} |> B.changeset(%{nonsense: "wut1"}) |> Repo.insert!();
-    b2 = %B{} |> B.changeset(%{nonsense: "wut2"}) |> Repo.insert!();
-    b3 = %B{} |> B.changeset(%{nonsense: "wut3"}) |> Repo.insert!();
+    j1 = %B{} |> B.changeset(%{nonsense: "wut1"}) |> Repo.insert!() |> Joint.changeset();
+    j2 = %B{} |> B.changeset(%{nonsense: "wut2"}) |> Repo.insert!() |> Joint.changeset();
+    j3 = %B{} |> B.changeset(%{nonsense: "wut3"}) |> Repo.insert!() |> Joint.changeset();
 
-    %A{} |> A.changeset(%{i_dunno: "I love Elixir!", smth_else: 42}, [b1, b2, b3])
+    %A{} |> A.changeset(%{i_dunno: "I love Elixir!", smth_else: 42}, [j1, j2, j3])
          |> Repo.insert!();
   end
 end
