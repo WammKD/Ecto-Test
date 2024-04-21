@@ -5,3 +5,5 @@ config :testing, Testing.Repo,
   username: "mariadb",
   password: "mariadb",
   hostname: "localhost"
+
+config :testing, ecto_repos: [Testing.Repo]

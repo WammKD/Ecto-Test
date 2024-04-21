@@ -8,6 +8,7 @@ defmodule Testing.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      Testing.Repo
       # Starts a worker by calling: Testing.Worker.start_link(arg)
       # {Testing.Worker, arg}
     ]
